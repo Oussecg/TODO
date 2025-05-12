@@ -1,0 +1,41 @@
+#todo-list{
+    display: grid;
+    row-gap: 8px;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 150px 75px;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.add-button{
+    color: white;
+    background: green;
+    padding: 2px 10px;
+    border: none;
+    height: 25px;
+    text-align: center;
+}
+
+.task-name{
+    width: 100%;
+    color: blue;
+    text-align: center;
+}
+
+.task-date{
+    width: 100%;
+    color: cyan;
+    text-align: center;
+}
+
+.delete-button{
+    color: white;
+    background: red;
+    border: none;
+    text-align: center;
+    height: 25px;
+}
+
