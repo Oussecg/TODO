@@ -6,6 +6,7 @@ class Operations {
         this.createTask = this.createTask.bind(this);
         this.removeTask = this.removeTask.bind(this);
         this.renderHTML = this.renderHTML.bind(this);
+        this.setButton = this.setButton.bind(this);
     }
 
     save_data() {
@@ -59,4 +60,11 @@ class Operations {
         });
         $("#todo-list").html(taskHtml);
     }
+
+    setButton() {
+        $(".add-button").on("click", this.createTask);
+    }
 }
+
+const operations = new Operations;
+operations.setButton();
