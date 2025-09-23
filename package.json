@@ -1,0 +1,24 @@
+{
+    "dependencies": {
+        "jquery": "^3.7.1"
+    },
+    "name": "todo",
+    "version": "1.0.0",
+    "description": "Welcome this Oussema' TODO Project, in this project i try to learn js array, for, forEach, addEventListener logics !!!",
+    "main": "index.js",
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Oussecg/TODO.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Oussecg/TODO/issues"
+    },
+    "homepage": "https://github.com/Oussecg/TODO#readme"
+}

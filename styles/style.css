@@ -39,3 +39,18 @@
     height: 25px;
 }
 
+#result{
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.onSuccess{
+    color: green;
+    text-shadow: 0 0 10px green;
+}
+
+.onFailed{
+    color: red;
+    text-shadow: 0 0 10px red;
+}
