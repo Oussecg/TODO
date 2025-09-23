@@ -117,11 +117,13 @@ class Operations {
     }
 
     removeTask(id) {
-        const index = this.array.findIndex((task) => task.task_id === id);
-        if (index !== -1) {
-            this.array.splice(index, 1);
-            this.delete_data(id);
-            this.renderHTML();
+        if (confirm("You want to delete this task ?")) {
+            const index = this.array.findIndex((task) => task.task_id === id);
+            if (index !== -1) {
+                this.array.splice(index, 1);
+                this.delete_data(id);
+                this.renderHTML();
+            }
         }
     }
 
