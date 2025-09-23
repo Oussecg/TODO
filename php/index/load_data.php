@@ -12,7 +12,7 @@ if (isset($cnc)){
             array_push($tasks, $task);
         }
         // todo: try to return the data through an json file
-        echo $tasks;
+        echo json_encode($tasks);
     } catch (\PDOException $th) {
         echo "failed due to this error: " . $th->getMessage();
     }

@@ -41,7 +41,9 @@ class Operations {
             data: "",
             success: (data) => {
                 if (data.indexOf("failed") === -1) {
-                    console.log(data);
+                    this.array = JSON.parse(data);
+                    console.log(this.array);
+                    this.renderHTML();
                 } else {
                     console.log(data);
                 }
@@ -52,7 +54,7 @@ class Operations {
     createTask() {
         const name = $(".todo-input").val();
         const date = $(".date-input").val();
-        this.array.push({ id: this.array.length, name: name, date: date });
+        this.array.push({ task_id: this.array.length, task_name: name, task_date: date });
         console.log(this.array);
         this.save_data(name, date);
         this.renderHTML();
@@ -70,9 +72,10 @@ class Operations {
         let taskHtml = "";
         this.array.forEach((element) => {
             taskHtml += `<div class="grid-container">
-                    <label class="task-name">${element.name}</label>
-                    <label class="task-date">${element.date}</label>
-                    <button class="delete-button" id='delete-button${element.id}' data-id="${element.id}">Delete</button>
+                    <label class="task_create_in">${element.create_in}</label>
+                    <label class="task-name">${element.task_name}</label>
+                    <label class="task-date">${element.task_date}</label>
+                    <button class="delete-button" id='delete-button${element.task_id}' data-id="${element.task_id}">Delete</button>
                 </div>`;
         });
         $("#todo-list").html(taskHtml);
