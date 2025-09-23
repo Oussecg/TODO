@@ -1,3 +1,5 @@
+/* todo: make general.css and style.css as a single file and add variables and search of colors that you could apply together to get good result*/
+/* todo: add some animation to our web and make responsible try to use tailwind if you want*/
 #todo-list {
     display: grid;
     row-gap: 8px;

@@ -97,6 +97,7 @@ class Operations {
         });
     }
 
+    // todo: add fade in animation when we add a task
     createTask() {
         const name = $(".todo-input").val();
         const date = $(".date-input").val();
@@ -159,3 +160,5 @@ class Operations {
 const operations = new Operations();
 operations.setButton();
 operations.load_data();
+
+// todo: try to add a file that switch your web from light theme to dark and from dark to light and find the colors that good for booth
