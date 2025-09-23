@@ -47,6 +47,18 @@
     --light-green: hsl(120, 100%, 35%);
 }
 
+.switch-theme{
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    color: var(--primary);
+}
+
+.switch-image{
+    width: 50px;
+    cursor: pointer;
+}
+
 body {
     background: var(--bg);
     color: var(--text);
@@ -60,7 +72,7 @@ header {
 
 .page-title {
     color: var(--primary);
-    border: var(--border) 3px inset;
+    border: var(--border) 3px solid;
     text-align: center;
     margin-top: 5px;
     padding: 5px 10px;

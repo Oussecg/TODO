@@ -10,6 +10,32 @@ class Operations {
         this.setButton = this.setButton.bind(this);
         this.setButtonDelete = this.setButtonDelete.bind(this);
         this.getMySQLDateTime = this.getMySQLDateTime.bind(this);
+        this.set_button_theme = this.set_button_theme.bind(this);
+        this.switch_theme = this.switch_theme.bind(this);
+    }
+
+    switch_theme() {
+        const current_theme = $(document.documentElement).attr("data-theme");
+        let theme = "";
+        if (current_theme === "dark") {
+            console.log("dark")
+            theme = "light";
+            $(".switch-theme").html(
+                '<img src="http://localhost/projects/TODO/images/switch-theme/switch-dark.png" class="switch-image">'
+            );
+        } else {
+            console.log("light")
+            theme = "dark";
+            $(".switch-theme").html(
+                '<img src="http://localhost/projects/TODO/images/switch-theme/switch-light.png" class="switch-image">'
+            );
+        };
+        console.log($(".switch-theme"));
+        $(document.documentElement).attr("data-theme", theme);
+    }
+
+    set_button_theme() {
+        $(".switch-theme").on("click", this.switch_theme);
     }
 
     checkInputs(name, date) {
@@ -160,5 +186,6 @@ class Operations {
 const operations = new Operations();
 operations.setButton();
 operations.load_data();
+operations.set_button_theme();
 
 // todo: try to add a file that switch your web from light theme to dark and from dark to light and find the colors that good for booth
