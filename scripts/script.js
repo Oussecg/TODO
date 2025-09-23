@@ -30,8 +30,12 @@ class Operations {
     }
 
     delete_data(index) {
-        let name = this.array.find((task) => { if (task.id === index) { return task.name } });
-        console.log(name);
+        let task = this.array.find((task) => {
+            if (task.task_id === index) {
+                return task.task_name;
+            }
+        });
+        // todo: delete the task from data base
     }
 
     load_data() {
@@ -42,10 +46,9 @@ class Operations {
             success: (data) => {
                 if (data.indexOf("failed") === -1) {
                     this.array = JSON.parse(data);
-                    console.log(this.array);
                     this.renderHTML();
                 } else {
-                    console.log(data);
+                    $("#result").html(data).addClass("onFailed").fadeIn(1000);
                 }
             },
         });
@@ -54,17 +57,24 @@ class Operations {
     createTask() {
         const name = $(".todo-input").val();
         const date = $(".date-input").val();
-        this.array.push({ task_id: this.array.length, task_name: name, task_date: date });
+        this.array.push({
+            task_id: this.array.length,
+            task_name: name,
+            task_date: date,
+        });
         console.log(this.array);
         this.save_data(name, date);
         this.renderHTML();
         $("#result").removeClass("onSuccess").removeClass("onFailed").html("");
     }
 
-    removeTask(i) {
-        this.array.splice(i, 1);
-        this.delete_data(i);
-        this.renderHTML();
+    removeTask(id) {
+        const index = this.array.findIndex((task) => task.task_id === id);
+        if (index !== -1) {
+            this.array.splice(id, 1);
+            this.delete_data(id);
+            this.renderHTML();
+        }
     }
 
     renderHTML() {
@@ -87,8 +97,8 @@ class Operations {
     }
 
     setButtonDelete() {
-        $(".delete-button").each(function() {
-            $(this).on("click", function() {
+        $(".delete-button").each(function () {
+            $(this).on("click", function () {
                 const id = $(this).data("id");
                 operations.removeTask(id);
             });

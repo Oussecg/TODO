@@ -1,11 +1,13 @@
-#todo-list{
+#todo-list {
     display: grid;
     row-gap: 8px;
     border-top: 1px solid grey;
     margin-top: 20px;
+    max-height: 450px;
+    overflow-y: auto;
 }
 
-.grid-container{
+.grid-container {
     border-bottom: 1px solid grey;
     padding: 6px 10px;
     display: grid;
@@ -14,7 +16,7 @@
     column-gap: 5px;
 }
 
-.add-button{
+.add-button {
     color: white;
     background: green;
     padding: 2px 10px;
@@ -23,19 +25,19 @@
     text-align: center;
 }
 
-.task-name{
+.task-name {
     width: 100%;
     color: blue;
     text-align: center;
 }
 
-.task-date{
+.task-date {
     width: 100%;
     color: cyan;
     text-align: center;
 }
 
-.delete-button{
+.delete-button {
     color: white;
     background: red;
     border: none;
@@ -43,18 +45,18 @@
     height: 25px;
 }
 
-#result{
+#result {
     display: none;
     margin-top: 20px;
     text-align: center;
 }
 
-.onSuccess{
+.onSuccess {
     color: green;
     text-shadow: 0 0 10px green;
 }
 
-.onFailed{
+.onFailed {
     color: red;
     text-shadow: 0 0 10px red;
 }
