@@ -11,6 +11,7 @@ if (isset($cnc)){
         while ($task = $data->fetch(PDO::FETCH_ASSOC)){
             array_push($tasks, $task);
         }
+        // todo: try to return the data through an json file
         echo $tasks;
     } catch (\PDOException $th) {
         echo "failed due to this error: " . $th->getMessage();
