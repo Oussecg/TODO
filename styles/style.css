@@ -1,19 +1,22 @@
 #todo-list {
     display: grid;
     row-gap: 8px;
-    border-top: 1px solid grey;
     margin-top: 20px;
     max-height: 450px;
     overflow-y: auto;
 }
 
-.grid-container {
-    border-bottom: 1px solid grey;
+.input-container , .grid-container {
     padding: 6px 10px;
     display: grid;
-    grid-template-columns: 200px 1fr 150px 75px;
+    grid-template-columns: 1fr 150px 75px;
     align-items: center;
     column-gap: 5px;
+}
+
+.grid-container{
+    border-bottom: 1px solid grey;
+    grid-template-columns: 200px 1fr 150px 75px;
 }
 
 .add-button {

@@ -11,6 +11,7 @@ if (isset($cnc)){
             $query = "DELETE FROM tasks WHERE task_id = $index";
             try {
                 $cnc->query($query);
+                echo "success";
             } catch (\PDOException $th) {
                 echo $th->getMessage();
             }

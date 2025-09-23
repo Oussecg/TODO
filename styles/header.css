@@ -1,6 +1,13 @@
+header{
+    display: flex;
+    justify-content: center;
+}
+
 .page-title{
     color: brown;
     border: brown 3px inset;
     text-align: center;
-    margin: 3px 0 15px 0;
+    margin-top: 5px;
+    padding: 5px 10px;
+    width: fit-content;
 }

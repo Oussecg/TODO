@@ -8,6 +8,25 @@ class Operations {
         this.renderHTML = this.renderHTML.bind(this);
         this.setButton = this.setButton.bind(this);
         this.setButtonDelete = this.setButtonDelete.bind(this);
+        this.getMySQLDateTime = this.getMySQLDateTime.bind(this);
+    }
+
+    checkInputs(name, date) {
+        if (date === "" || name === "") {
+            return false;
+        }
+        return true;
+    }
+
+    getMySQLDateTime() {
+        const now = new Date();
+        const pad = n => n < 10 ? '0' + n : n;
+        return now.getFullYear() + '-' +
+            pad(now.getMonth() + 1) + '-' +
+            pad(now.getDate()) + ' ' +
+            pad(now.getHours()) + ':' +
+            pad(now.getMinutes()) + ':' +
+            pad(now.getSeconds());
     }
 
     save_data(name, date) {
@@ -16,7 +35,6 @@ class Operations {
             type: "post",
             data: `task_name=${name}&task_date=${date}`,
             success: (data) => {
-                console.log(data);
                 if (data.indexOf("success") !== -1) {
                     $("#result")
                         .html("Operation has completed successfully !")
@@ -30,12 +48,6 @@ class Operations {
     }
 
     delete_data(index) {
-        let task = this.array.find((task) => {
-            if (task.task_id === index) {
-                return task.task_name;
-            }
-        });
-        // todo: delete the task from data base
         $.ajax({
             type: "post",
             url: "http://localhost/projects/TODO/php/index/delete_task.php",
@@ -72,15 +84,21 @@ class Operations {
     createTask() {
         const name = $(".todo-input").val();
         const date = $(".date-input").val();
-        this.array.push({
-            task_id: this.array.length,
-            task_name: name,
-            task_date: date,
-        });
-        console.log(this.array);
-        this.save_data(name, date);
-        this.renderHTML();
-        $("#result").removeClass("onSuccess").removeClass("onFailed").html("");
+        if (this.checkInputs(name, date)) {
+            const createTime = this.getMySQLDateTime();
+            this.array.push({
+                task_id: this.array.length,
+                task_name: name,
+                task_date: date,
+                create_in: createTime
+            });
+            this.save_data(name, date);
+            this.renderHTML();
+            $("#result").removeClass("onSuccess").removeClass("onFailed").html("");
+        }
+        else {
+            $("#result").removeClass("onSuccess").addClass("onFailed").html("Please Fill the two inputs !").fadeIn(1000);
+        }
     }
 
     removeTask(id) {
