@@ -1,5 +1,6 @@
 class Operations {
     constructor() {
+        this.can_add = false;
         this.array = [];
         this.save_data = this.save_data.bind(this);
         this.load_data = this.load_data.bind(this);
@@ -20,13 +21,20 @@ class Operations {
 
     getMySQLDateTime() {
         const now = new Date();
-        const pad = n => n < 10 ? '0' + n : n;
-        return now.getFullYear() + '-' +
-            pad(now.getMonth() + 1) + '-' +
-            pad(now.getDate()) + ' ' +
-            pad(now.getHours()) + ':' +
-            pad(now.getMinutes()) + ':' +
-            pad(now.getSeconds());
+        const pad = (n) => (n < 10 ? "0" + n : n);
+        return (
+            now.getFullYear() +
+            "-" +
+            pad(now.getMonth() + 1) +
+            "-" +
+            pad(now.getDate()) +
+            " " +
+            pad(now.getHours()) +
+            ":" +
+            pad(now.getMinutes()) +
+            ":" +
+            pad(now.getSeconds())
+        );
     }
 
     save_data(name, date) {
@@ -36,6 +44,14 @@ class Operations {
             data: `task_name=${name}&task_date=${date}`,
             success: (data) => {
                 if (data.indexOf("success") !== -1) {
+                    const createTime = this.getMySQLDateTime();
+                    this.array.push({
+                        task_id: this.array.length,
+                        task_name: name,
+                        task_date: date,
+                        create_in: createTime,
+                    });
+                    this.renderHTML();
                     $("#result")
                         .html("Operation has completed successfully !")
                         .addClass("onSuccess")
@@ -85,19 +101,18 @@ class Operations {
         const name = $(".todo-input").val();
         const date = $(".date-input").val();
         if (this.checkInputs(name, date)) {
-            const createTime = this.getMySQLDateTime();
-            this.array.push({
-                task_id: this.array.length,
-                task_name: name,
-                task_date: date,
-                create_in: createTime
-            });
             this.save_data(name, date);
-            this.renderHTML();
-            $("#result").removeClass("onSuccess").removeClass("onFailed").html("");
-        }
-        else {
-            $("#result").removeClass("onSuccess").addClass("onFailed").html("Please Fill the two inputs !").fadeIn(1000);
+            console.log(this.can_add, this.can_add === true);
+            $("#result")
+                .removeClass("onSuccess")
+                .removeClass("onFailed")
+                .html("");
+        } else {
+            $("#result")
+                .removeClass("onSuccess")
+                .addClass("onFailed")
+                .html("Please Fill the two inputs !")
+                .fadeIn(1000);
         }
     }
 
