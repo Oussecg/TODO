@@ -36,13 +36,28 @@ class Operations {
             }
         });
         // todo: delete the task from data base
+        $.ajax({
+            type: "post",
+            url: "http://localhost/projects/TODO/php/index/delete_task.php",
+            data: `index=${index}`,
+            success: (data) => {
+                if (data.indexOf("success") !== -1) {
+                    $("#result")
+                        .html("The operation is successful !")
+                        .addClass("onSuccess")
+                        .fadeIn(1000);
+                } else {
+                    $("#result").html(data).addClass("onFailed").fadeIn(1000);
+                }
+            },
+        });
     }
 
     load_data() {
         $.ajax({
             url: "http://localhost/projects/TODO/php/index/load_data.php",
             type: "post",
-            data: "",
+            data: "loadData=true",
             success: (data) => {
                 if (data.indexOf("failed") === -1) {
                     this.array = JSON.parse(data);
@@ -71,7 +86,7 @@ class Operations {
     removeTask(id) {
         const index = this.array.findIndex((task) => task.task_id === id);
         if (index !== -1) {
-            this.array.splice(id, 1);
+            this.array.splice(index, 1);
             this.delete_data(id);
             this.renderHTML();
         }
@@ -105,7 +120,6 @@ class Operations {
         });
     }
 }
-
 
 const operations = new Operations();
 operations.setButton();

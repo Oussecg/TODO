@@ -16,12 +16,13 @@ if (isset($cnc)){
             } catch (\PDOException $e) {
                 echo $e->getMessage();
             }
-            $cn->close();
+        } else{
+            echo "Please fill inputs fields";
         }
     }
 } else{
     echo $cnc;
-    $cn->close();
 }
+$cn->close();
 
 ?>
