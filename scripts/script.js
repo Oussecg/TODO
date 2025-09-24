@@ -18,18 +18,18 @@ class Operations {
         const current_theme = $(document.documentElement).attr("data-theme");
         let theme = "";
         if (current_theme === "dark") {
-            console.log("dark")
+            console.log("dark");
             theme = "light";
             $(".switch-theme").html(
                 '<img src="http://localhost/projects/TODO/images/switch-theme/switch-dark.png" class="switch-image">'
             );
         } else {
-            console.log("light")
+            console.log("light");
             theme = "dark";
             $(".switch-theme").html(
                 '<img src="http://localhost/projects/TODO/images/switch-theme/switch-light.png" class="switch-image">'
             );
-        };
+        }
         console.log($(".switch-theme"));
         $(document.documentElement).attr("data-theme", theme);
     }
@@ -129,7 +129,6 @@ class Operations {
         const date = $(".date-input").val();
         if (this.checkInputs(name, date)) {
             this.save_data(name, date);
-            console.log(this.can_add, this.can_add === true);
             $("#result")
                 .removeClass("onSuccess")
                 .removeClass("onFailed")
@@ -155,17 +154,16 @@ class Operations {
     }
 
     renderHTML() {
-        $("#todo-list").html("");
-        let taskHtml = "";
-        this.array.forEach((element) => {
-            taskHtml += `<div class="grid-container">
+        $("#todo-list").html("")
+        this.array.forEach((element, id) => {
+            let taskHtml =`<div class="grid-container" id="task${id}">
                     <label class="task_create_in">${element.create_in}</label>
                     <label class="task-name">${element.task_name}</label>
                     <label class="task-date">${element.task_date}</label>
                     <button class="delete-button" id='delete-button${element.task_id}' data-id="${element.task_id}">Delete</button>
                 </div>`;
+            $("#todo-list").append(taskHtml);
         });
-        $("#todo-list").html(taskHtml);
         this.setButtonDelete();
     }
 
@@ -187,5 +185,3 @@ const operations = new Operations();
 operations.setButton();
 operations.load_data();
 operations.set_button_theme();
-
-// todo: try to add a file that switch your web from light theme to dark and from dark to light and find the colors that good for booth
