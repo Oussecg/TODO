@@ -123,7 +123,6 @@ class Operations {
         });
     }
 
-    // todo: add fade in animation when we add a task
     createTask() {
         const name = $(".todo-input").val();
         const date = $(".date-input").val();
