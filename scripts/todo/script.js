@@ -18,19 +18,16 @@ class Operations {
         const current_theme = $(document.documentElement).attr("data-theme");
         let theme = "";
         if (current_theme === "dark") {
-            console.log("dark");
             theme = "light";
             $(".switch-theme").html(
                 '<img src="http://localhost/projects/TODO/images/switch-theme/switch-dark.png" class="switch-image">'
             );
         } else {
-            console.log("light");
             theme = "dark";
             $(".switch-theme").html(
                 '<img src="http://localhost/projects/TODO/images/switch-theme/switch-light.png" class="switch-image">'
             );
         }
-        console.log($(".switch-theme"));
         $(document.documentElement).attr("data-theme", theme);
     }
 

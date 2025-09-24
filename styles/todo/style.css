@@ -1,5 +1,3 @@
-/* todo: add some animation to our web and make responsible try to use tailwind if you want*/
-
 * {
     box-sizing: border-box;
 }
@@ -188,4 +186,14 @@ input {
 .onFailed {
     color: var(--danger);
     text-shadow: 0 0 10px var(--danger);
+}
+
+footer{
+    display: flex;
+    justify-content: space-around;
+    justify-content: center;
+}
+
+.externel-page{
+    color: var(--text-muted);
 }
