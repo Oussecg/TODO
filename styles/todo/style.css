@@ -109,7 +109,7 @@ input {
 #todo-list {
     display: grid;
     margin-top: 20px;
-    max-height: 450px;
+    max-height: 60%;
     overflow-y: auto;
 }
 
