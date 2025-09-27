@@ -153,9 +153,9 @@ class Operations {
         $("#todo-list").html("")
         this.array.forEach((element, id) => {
             let taskHtml =`<div class="grid-container" id="task${id}">
-                    <label class="task_create_in">${element.create_in}</label>
-                    <label class="task-name">${element.task_name}</label>
-                    <label class="task-date">${element.task_date}</label>
+                    <span class="task_create_in">${element.create_in}</span>
+                    <span class="task-name">${element.task_name}</span>
+                    <span class="task-date">${element.task_date}</span>
                     <button class="delete-button" id='delete-button${element.task_id}' data-id="${element.task_id}">Delete</button>
                 </div>`;
             $("#todo-list").append(taskHtml);

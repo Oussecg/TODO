@@ -1,7 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
 :root {
     --bg-dark: hsl(220 59% 91%);
     --bg: hsl(220 100% 97%);
@@ -21,6 +17,9 @@
     --light-red: hsl(0, 100%, 90%);
     --green: hsl(120, 100%, 50%);
     --light-green: hsl(120, 100%, 70%);
+    --max-font: 18px;
+    --avg-font: 5vh;
+    --min-font: 11px;
 }
 
 :root[data-theme="dark"] {
@@ -44,6 +43,13 @@
     --light-green: hsl(120, 100%, 35%);
 }
 
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .switch-theme{
     position: absolute;
     left: 3px;
@@ -59,7 +65,8 @@
 body {
     background: var(--bg);
     color: var(--text);
-    transition: background 0.3s, color 0.3s;
+    transition: all 0.3s;
+    height: 100dvh;
 }
 
 header {
@@ -109,12 +116,14 @@ input {
 #todo-list {
     display: grid;
     margin-top: 20px;
-    max-height: 60%;
+    height: 100%;
+    max-height: max(100px, 60dvh);
     overflow-y: auto;
 }
 
 .input-container,
 .grid-container {
+    font-size: clamp(var(--min-font), var(--avg-font), var(--max-font));
     padding: 6px 10px;
     display: grid;
     grid-template-columns: 1fr 150px 75px;
