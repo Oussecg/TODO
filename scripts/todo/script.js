@@ -20,12 +20,12 @@ class Operations {
         if (current_theme === "dark") {
             theme = "light";
             $(".switch-theme").html(
-                '<img src="http://localhost/projects/TODO/images/switch-theme/switch-dark.png" class="switch-image">'
+                '<img src="http://localhost/projects/TODO/images/switch-theme/toggle_off.svg" class="switch-image">'
             );
         } else {
             theme = "dark";
             $(".switch-theme").html(
-                '<img src="http://localhost/projects/TODO/images/switch-theme/switch-light.png" class="switch-image">'
+                '<img src="http://localhost/projects/TODO/images/switch-theme/toggle_on.svg" class="switch-image">'
             );
         }
         $(document.documentElement).attr("data-theme", theme);
