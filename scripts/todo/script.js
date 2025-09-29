@@ -15,7 +15,16 @@ class Operations {
     }
 
     switch_theme() {
-        const current_theme = $(document.documentElement).attr("data-theme");
+        if (localStorage.getItem("current_theme")) {
+            const current_theme = localStorage.getItem("current_theme");
+            this.switching_process(current_theme)
+        } else {
+            const current_theme = $(document.documentElement).attr("data-theme");
+            this.switching_process(current_theme)
+        }
+    }
+
+    switching_process(current_theme) {
         let theme = "";
         if (current_theme === "dark") {
             theme = "light";
@@ -29,6 +38,7 @@ class Operations {
             );
         }
         $(document.documentElement).attr("data-theme", theme);
+        localStorage.setItem("current_theme", theme);
     }
 
     set_button_theme() {
