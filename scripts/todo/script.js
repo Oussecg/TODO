@@ -12,13 +12,21 @@ class Operations {
         this.getMySQLDateTime = this.getMySQLDateTime.bind(this);
         this.set_button_theme = this.set_button_theme.bind(this);
         this.switch_theme = this.switch_theme.bind(this);
+        this.switching_process = this.switching_process.bind(this);
     }
 
     switch_theme() {
+        $(".date-input").removeClass("light-calendered").removeClass("dark-calendered");
+        console.log(
+            localStorage.getItem("current_theme"),
+            localStorage.getItem("current_theme")
+        );
         if (localStorage.getItem("current_theme")) {
+            console.log("1")
             const current_theme = localStorage.getItem("current_theme");
             this.switching_process(current_theme)
         } else {
+            console.log("2")
             const current_theme = $(document.documentElement).attr("data-theme");
             this.switching_process(current_theme)
         }
@@ -31,11 +39,13 @@ class Operations {
             $(".switch-theme").html(
                 '<img src="http://localhost/projects/TODO/images/switch-theme/toggle_off.svg" class="switch-image">'
             );
+            $(".date-input").addClass("dark-calendered");
         } else {
             theme = "dark";
             $(".switch-theme").html(
                 '<img src="http://localhost/projects/TODO/images/switch-theme/toggle_on.svg" class="switch-image">'
             );
+            $(".date-input").addClass("light-calendered");
         }
         $(document.documentElement).attr("data-theme", theme);
         localStorage.setItem("current_theme", theme);
@@ -43,6 +53,23 @@ class Operations {
 
     set_button_theme() {
         $(".switch-theme").on("click", this.switch_theme);
+        if (localStorage.getItem("current_theme")) {
+            $(document.documentElement).attr(
+                "data-theme",
+                localStorage.getItem("current_theme")
+            );
+            if (localStorage.getItem("current_theme") == "light") {
+                $(".switch-theme").html(
+                    '<img src="http://localhost/projects/TODO/images/switch-theme/toggle_off.svg" class="switch-image">'
+                );
+                $(".date-input").addClass("dark-calendered");
+            } else {
+                $(".switch-theme").html(
+                    '<img src="http://localhost/projects/TODO/images/switch-theme/toggle_on.svg" class="switch-image">'
+                );
+                $(".date-input").addClass("light-calendered");
+            }
+        }
     }
 
     checkInputs(name, date) {
