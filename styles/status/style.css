@@ -48,10 +48,27 @@ body{
     background-color: var(--bg);
 }
 
+header{
+    position: sticky;
+    border-bottom: 1px solid var(--border);
+}
+
+main{
+    border: 1px solid var(--border);
+    margin: 20px;
+    padding: 20px;
+    max-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#circle{
+    fill: var(--primary);
+    transition: all 1s;
+}
+
 .switch-theme{
-    position: absolute;
-    left: 3px;
-    top: 3px;
     color: var(--primary);
 }
 
@@ -61,11 +78,15 @@ body{
 }
 
 footer{
+    position: fixed;
+    bottom: 2px;
+    left: 0;
+    right: 0;
     display: flex;
-    justify-content: space-around;
     justify-content: center;
+    align-items: center;
 }
 
-.externel-page{
+.external-page{
     color: var(--text-muted);
 }
